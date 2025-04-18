@@ -11,7 +11,7 @@ app = Flask(__name__)
 CORS(app)
 
 ZAPI_INSTANCE_URL = os.environ.get("ZAPI_INSTANCE_URL")
-ZAPI_SEND_ENDPOINT = f"{ZAPI_INSTANCE_URL}/send-message"
+ZAPI_SEND_ENDPOINT = f"{ZAPI_INSTANCE_URL}/send-text"
 
 @app.route("/", methods=["GET"])
 def home():
