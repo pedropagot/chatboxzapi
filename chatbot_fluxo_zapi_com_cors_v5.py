@@ -49,6 +49,7 @@ def webhook():
             "phone": from_number,
             "message": text
         }
+        ZAPI_CLIENT_TOKEN = os.environ.get("ZAPI_CLIENT_TOKEN")
         headers = {"Client-Token": ZAPI_CLIENT_TOKEN}
         print(f"📤 URL final usada: {ZAPI_SEND_ENDPOINT}", flush=True)
         print(f"📨 Payload enviado: {payload}", flush=True)
