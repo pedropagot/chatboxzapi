@@ -12,7 +12,7 @@ user_sessions = {}
 ZAPI_INSTANCE_ID = os.environ.get("ZAPI_INSTANCE_ID")
 ZAPI_CLIENT_TOKEN = os.environ.get("ZAPI_CLIENT_TOKEN")
 ZAPI_SEND_ENDPOINT = f"https://api.z-api.io/instances/{ZAPI_INSTANCE_ID}/token/{ZAPI_CLIENT_TOKEN}/send-messages"
-headers = {"Client-Token": ZAPI_CLIENT_TOKEN}
+headers = {}
 print(f"📤 URL final usada: {ZAPI_SEND_ENDPOINT}", flush=True)
 print(f"🛡️ Header usado: {headers}", flush=True)
 
@@ -121,11 +121,12 @@ def send_message(user, text):
         "message": text
     }
     try:
-        response = requests.post(ZAPI_SEND_ENDPOINT, json=payload, headers=headers)
+        response = requests.post(ZAPI_SEND_ENDPOINT, json=payload)
         print(f"📨 Payload enviado: {payload}", flush=True)
         print(f"📬 Resposta da Z-API: {response.status_code} - {response.text}", flush=True)
     except Exception as e:
         print(f"❌ Erro ao enviar mensagem: {e}", flush=True)
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
